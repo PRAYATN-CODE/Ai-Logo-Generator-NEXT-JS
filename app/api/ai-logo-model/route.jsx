@@ -30,7 +30,7 @@ export async function POST(req) {
         const AiPrompt = parsedResult.prompt;
 
         const ai = new GoogleGenAI({
-            apiKey: 'AIzaSyBcnLZ1Rc4rX6x_DLhDpkVy5RocW6zMioc',
+            apiKey: process.env.GEMINI_API_KEY,
         });
         const config = {
             responseModalities: [

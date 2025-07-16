@@ -22,7 +22,7 @@ const GenerateLogo = () => {
     const modelType = searchParams.get('type')
 
     useEffect(() => {
-        if (typeof window != undefined && userDetail?.email) {
+        if (userDetail?.email) {
             const storage = localStorage.getItem('formData')
             if (storage) {
                 setFormData(JSON.parse(storage))
@@ -32,7 +32,7 @@ const GenerateLogo = () => {
     }, [userDetail])
 
     useEffect(() => {
-        if (formData?.title) {
+        if (formData?.title && !logoImage) {
             GenerateAILogo();
         }
     }, [formData])
@@ -68,6 +68,7 @@ const GenerateLogo = () => {
 
             console.log(result?.data);
             setLogoImage(result?.data?.image);
+            
         } catch (error) {
             console.error("Error generating AI logo:", error);
         } finally {

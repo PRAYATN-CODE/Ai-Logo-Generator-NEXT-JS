@@ -12,7 +12,7 @@ const PricingModel = ({ formData }) => {
     const { user } = useUser();
 
     useEffect(() => {
-        if (formData?.title) {
+        if (formData?.title || formData?.desc || formData?.palette) {
             localStorage.setItem('formData', JSON.stringify(formData))
         }
     }, [formData])
