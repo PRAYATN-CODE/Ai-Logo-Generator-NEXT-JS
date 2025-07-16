@@ -22,6 +22,7 @@ const LogoTitle = ({ onHandleInputChange }) => {
                 className="p-4 border rounded-lg mt-5 w-full"
                 defaultValue={title}
                 onChange={(e) => onHandleInputChange(e.target.value)}
+                autoFocus
             />
         </div>
     )

@@ -42,7 +42,7 @@ const CreateLogo = () => {
       {
         step == 1 ? <Suspense
           fallback={
-            <div className="flex items-center justify-center h-32">
+            <div className="p-10 text-center text-gray-600 flex items-center justify-center">
               <Loader2 className="animate-spin w-4 h-4" />
             </div>
           }

@@ -15,6 +15,7 @@ const LogoDesc = ({ onHandleInputChange, formData }) => {
                 className="p-4 border rounded-lg mt-5 w-full"
                 value={formData?.desc || ''}
                 onChange={(e) => onHandleInputChange(e.target.value)}
+                autoFocus
             />
         </div>
     )
