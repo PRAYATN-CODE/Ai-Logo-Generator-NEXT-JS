@@ -1,7 +1,7 @@
 "use client"
 import { Button } from "@/components/ui/button"
-import { ArrowLeft, ArrowRight } from "lucide-react"
-import { useEffect, useState } from "react"
+import { ArrowLeft, ArrowRight, Loader2 } from "lucide-react"
+import { Suspense, useEffect, useState } from "react"
 import LogoColorPallete from "./_components/LogoColorPallete"
 import LogoDesc from "./_components/LogoDesc"
 import LogoDesigns from "./_components/LogoDesigns"
@@ -40,7 +40,15 @@ const CreateLogo = () => {
   return (
     <div className="mt-28 p-10 border rounded-xl 2xl:mx-72">
       {
-        step == 1 ? <LogoTitle formData={formData} onHandleInputChange={(v) => onHandleInputChange('title', v)} /> :
+        step == 1 ? <Suspense
+          fallback={
+            <div className="flex items-center justify-center h-32">
+              <Loader2 className="animate-spin w-4 h-4" />
+            </div>
+          }
+        >
+          <LogoTitle formData={formData} onHandleInputChange={(v) => onHandleInputChange('title', v)} />
+        </Suspense> :
           step == 2 ? <LogoDesc formData={formData} onHandleInputChange={(v) => onHandleInputChange('desc', v)} /> :
             step == 3 ? <LogoColorPallete formData={formData} onHandleInputChange={(v) => onHandleInputChange('palette', v)} /> :
               step == 4 ? <LogoDesigns formData={formData} onHandleInputChange={(v) => onHandleInputChange('design', v)} /> :

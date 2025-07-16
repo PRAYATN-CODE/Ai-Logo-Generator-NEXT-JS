@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import Lookup from "@/app/_data/Lookup";
 import { useSearchParams } from "next/navigation";
