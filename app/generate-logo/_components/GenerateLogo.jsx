@@ -8,7 +8,6 @@ import axios from "axios";
 import { DownloadIcon, LayoutDashboard, LoaderIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import { toast } from "sonner";
 
@@ -18,8 +17,6 @@ const GenerateLogo = () => {
     const [formData, setFormData] = useState();
     const [loading, setLoading] = useState(false)
     const [logoImage, setLogoImage] = useState();
-    const searchParams = useSearchParams();
-    const modelType = searchParams.get('type')
 
     useEffect(() => {
         if (userDetail?.email) {
@@ -41,7 +38,7 @@ const GenerateLogo = () => {
         toast('Ai Will Generating Your Logo')
         setLoading(true);
 
-        if (modelType != 'Free' && userDetail?.credits <= 0) {
+        if (userDetail?.credits <= 0) {
             setLoading(false);
             console.log("Not Enough Credits");
             toast('Not enough Credits!')
@@ -62,7 +59,7 @@ const GenerateLogo = () => {
                 email: userDetail?.email,
                 title: formData?.title,
                 desc: formData?.desc,
-                type: modelType,
+                type: 'Free',
                 userCredits: userDetail?.credits
             });
 

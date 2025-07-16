@@ -1,14 +1,12 @@
 'use client'
 
 import Lookup from "@/app/_data/Lookup";
-import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import HeadingDescription from "./HeadingDescription";
 
 const LogoTitle = ({ onHandleInputChange }) => {
 
-    const searchParam = useSearchParams();
-    const [title, setTitle] = useState(searchParam?.get('title')??'');
+    const [title, setTitle] = useState('');
 
     return (
         <div className="my-10 ">
